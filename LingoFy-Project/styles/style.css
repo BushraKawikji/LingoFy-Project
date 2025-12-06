@@ -136,6 +136,10 @@ body {
 }
 
 /* Stat Cards */
+.stat-cards-container {
+  display: flex;
+  justify-content: space-between;
+}
 .stat-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -329,7 +333,7 @@ body {
 }
 
 .nav-link:hover {
-  color: var(--primary-color) !important;
+  color: var(--light-color) !important;
 }
 
 .nav-link.active {

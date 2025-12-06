@@ -1,180 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Taking Test - French Quiz</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
-    />
-    <link
-   
-         rel="stylesheet" href="/LingoFy-Project/styles/style.css">
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-      <div class="container">
-        <a
-          class="navbar-brand d-flex align-items-center"
-          href="student-tests.html"
-        >
-          <i
-            class="bi bi-translate text-primary me-2"
-            style="font-size: 1.5rem"
-          ></i>
-          <span class="fw-bold">FrenchQuiz</span>
-        </a>
-      </div>
-    </nav>
 
-    <div class="container py-5">
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <!-- Progress Bar -->
-          <div class="mb-4">
-            <div class="d-flex justify-content-between mb-2">
-              <span class="small text-muted"
-                >Question <span id="currentQuestion">1</span> of
-                <span id="totalQuestions">10</span></span
-              >
-              <span class="small text-muted"
-                ><span id="progressPercent">10</span>% Complete</span
-              >
-            </div>
-            <div class="progress" style="height: 8px">
-              <div
-                class="progress-bar bg-primary"
-                role="progressbar"
-                id="progressBar"
-                style="width: 10%"
-              ></div>
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taking Test - French Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="/styles/style.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="student-tests.html">
+        <i class="bi bi-translate text-primary me-2" style="font-size: 1.5rem"></i>
+        <span class="fw-bold">FrenchQuiz</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Progress Bar -->
+        <div class="mb-4">
+          <div class="d-flex justify-content-between mb-2">
+            <span class="small text-muted">
+              Question <span id="currentQuestion">1</span> of
+              <span id="totalQuestions"></span>
+            </span>
+            <span class="small text-muted"><span id="progressPercent">0</span>% Complete</span>
           </div>
+          <div class="progress" style="height: 8px">
+            <div class="progress-bar bg-primary" role="progressbar" id="progressBar" style="width: 0%"></div>
+          </div>
+        </div>
 
-          <!-- Question Card -->
-          <div class="card border-0 shadow-sm mb-4" id="questionCard">
-            <div class="card-body p-4">
-              <div class="d-flex align-items-start mb-3">
-                <span class="badge bg-primary me-2" id="questionNumber"
-                  >Q1</span
-                >
-                <span
-                  class="badge bg-warning"
-                  id="requiredBadge"
-                  style="display: none"
-                >
-                  <i class="bi bi-asterisk me-1"></i>Required
-                </span>
-              </div>
+        <!-- Question Card -->
+        <div class="card border-0 shadow-sm mb-4" id="questionCard">
+          <div class="card-body p-4">
+            <!-- Question number and required badge -->
+            <div class="d-flex align-items-start mb-3">
+              <span class="badge bg-primary me-2" id="questionNumber">Q1</span>
+              <span class="badge bg-warning" id="requiredBadge" style="display: none">
+                <i class="bi bi-asterisk me-1"></i>Required
+              </span>
+            </div>
 
+            <!-- Question Text -->
+            <h5 id="questionText" class="mb-3"></h5>
 
-              <!-- Text Input -->
-              <div id="textInputContainer" class="d-none">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="textAnswer"
-                  placeholder="Enter your answer"
-                />
-              </div>
+            <!-- Radio Options -->
+            <div id="radioOptionsContainer"></div>
 
-              <!-- Radio Options -->
-              <div id="radioOptionsContainer" class="d-none">
-                <div class="form-check mb-3">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="radioAnswer"
-                    id="radio1"
-                    value="option1"
-                  />
-                  <label
-                    class="form-check-label w-100 p-3 border rounded"
-                    for="radio1"
-                  >
-                    <i class="bi bi-circle me-2"></i>Bonjour
-                  </label>
-                </div>
-                <div class="form-check mb-3">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="radioAnswer"
-                    id="radio2"
-                    value="option2"
-                  />
-                  <label
-                    class="form-check-label w-100 p-3 border rounded"
-                    for="radio2"
-                  >
-                    <i class="bi bi-circle me-2"></i>Au revoir
-                  </label>
-                </div>
-                <div class="form-check mb-3">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="radioAnswer"
-                    id="radio3"
-                    value="option3"
-                  />
-                  <label
-                    class="form-check-label w-100 p-3 border rounded"
-                    for="radio3"
-                  >
-                    <i class="bi bi-circle me-2"></i>Merci
-                  </label>
-                </div>
-              </div>
-
-              <!-- Select Dropdown -->
-              <div id="selectContainer" class="d-none">
-                <select class="form-select form-select-lg" id="selectAnswer">
-                  <option value="">Choose an option</option>
-                  <option value="option1">Option 1</option>
-                  <option value="option2">Option 2</option>
-                  <option value="option3">Option 3</option>
-                </select>
-              </div>
+            <!-- Select Dropdown -->
+            <div id="selectContainer" class="d-none">
+              <select class="form-select form-select-lg" id="selectAnswer">
+                <option value="">Choose an option</option>
+              </select>
             </div>
           </div>
+        </div>
 
-          <!-- Navigation Buttons -->
-          <div class="d-flex justify-content-between">
-            <button
-              class="btn btn-outline-secondary"
-              id="prevBtn"
-              onclick="previousQuestion()"
-              disabled
-            >
-              <i class="bi bi-arrow-left me-2"></i>Previous
-            </button>
-            <button
-              class="btn btn-primary"
-              id="nextBtn"
-              onclick="nextQuestion()"
-            >
-              Next<i class="bi bi-arrow-right ms-2"></i>
-            </button>
-            <button
-              class="btn btn-success d-none"
-              id="submitBtn"
-              onclick="submitTest()"
-            >
-              <i class="bi bi-check-circle me-2"></i>Submit Test
-            </button>
-          </div>
+        <!-- Navigation Buttons -->
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-outline-secondary" id="prevBtn" disabled>
+            <i class="bi bi-arrow-left me-2"></i>Previous
+          </button>
+          <button class="btn btn-primary" id="nextBtn">
+            Next<i class="bi bi-arrow-right ms-2"></i>
+          </button>
+          <button class="btn btn-success d-none" id="submitBtn">
+            <i class="bi bi-check-circle me-2"></i>Submit Test
+          </button>
         </div>
       </div>
     </div>
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../quiz-page/main.js"></script>
-  </body>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/pages/user/quiz-page/main.js"></script>
+</body>
+
 </html>
